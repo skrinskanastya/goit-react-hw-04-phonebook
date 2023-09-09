@@ -12,17 +12,15 @@ export const App = () => {
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
-    const savedNames = localStorage.getItem('names');
-    if (savedNames !== null) {
-      setContacts(JSON.parse(savedNames));
-    }
-  }, []);
-  useEffect(() => {
     localStorage.setItem('names', JSON.stringify(contacts));
   }, [contacts]);
 
   const updateContacts = newContact => {
-    if (contacts.some(contact => contact.name === newContact.name)) {
+    if (
+      contacts.some(
+        contact => contact.name.toLowerCase === newContact.name.toLowerCase
+      )
+    ) {
       alert(`${newContact.name} is already in contacts.`);
       return;
     }
