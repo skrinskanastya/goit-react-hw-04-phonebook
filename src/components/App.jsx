@@ -18,7 +18,7 @@ export const App = () => {
   const updateContacts = newContact => {
     if (
       contacts.some(
-        contact => contact.name.toLowerCase === newContact.name.toLowerCase
+        contact => contact.name.toLowerCase() === newContact.name.toLowerCase()
       )
     ) {
       alert(`${newContact.name} is already in contacts.`);
